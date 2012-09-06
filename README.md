@@ -1,7 +1,7 @@
 [![DropletLift][Project Logo]][Website]
 What is DropletLift?
 --------------
-DropletLift is a demo plugin for the upcoming Spout server which features usage of structures, the task manager and player events.
+DropletLift is a lifts and elevators "Droplet" plugin for the Spout platform to demonstrate the usage of block movement.
 
 Copyright (c) 2011-2012, SpoutDev <http://www.spout.org>
 

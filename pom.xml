@@ -5,7 +5,7 @@
 	<artifactId>droplet.lift</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>DropleftLift</name>
-	<description>Lift "Droplet" plugin for the Spout platform to demonstrate the usage of player events, block API and tasks</description>
+	<description>Lifts and elevators "Droplet" plugin for the Spout platform to demonstrate the usage of block movement.</description>
 	<repositories>
 		<repository>
 			<id>alta189</id>
