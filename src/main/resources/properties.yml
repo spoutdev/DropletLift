@@ -1,0 +1,6 @@
+name: DropletLift
+version: dev-SNAPSHOT
+website: http://spout.org
+main: org.spout.droplet.lift.DropletLift
+platform: SERVER
+reload: true

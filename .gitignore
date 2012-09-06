@@ -57,6 +57,7 @@ nbproject
 atlassian-ide-plugin.xml
 build.xml
 nb-configuration.xml
+
 *.iml
 *.ipr
 *.iws
