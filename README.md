@@ -50,7 +50,7 @@ Coding and Pull Request Formatting
 [License]: http://www.spout.org/SpoutDevLicenseV1.txt
 [Website]: http://www.spout.org
 [Forums]: http://forums.spout.org
-[GitHub]: https://github.com/SpoutDev/DropletLift
+[GitHub]: https://github.com/Droplet/DropletLift
 [Jenkins]: http://build.spout.org/job/DropletLift
 [Issues]: http://issues.spout.org
 [Twitter]: http://spout.in/twitter
