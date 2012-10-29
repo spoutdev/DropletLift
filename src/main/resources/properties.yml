@@ -1,6 +1,10 @@
 name: DropletLift
-version: dev-SNAPSHOT
-website: http://spout.org
+version: ${releaseVersion} b${buildNumber}
+
+description: Lifts and elevators "Droplet" plugin for the Spout platform to demonstrate the usage of block movement.
+author: Spout LLC
+website: http://www.spout.org
+
 main: org.spout.droplet.lift.DropletLift
 platform: SERVER
 reload: true
