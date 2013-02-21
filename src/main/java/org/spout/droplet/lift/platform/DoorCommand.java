@@ -1,7 +1,5 @@
 package org.spout.droplet.lift.platform;
 
-import org.spout.api.geo.World;
-import org.spout.api.geo.cuboid.Block;
 import org.spout.droplet.lift.lift.Floor;
 
 public class DoorCommand extends PlatformCommand {
@@ -15,7 +13,6 @@ public class DoorCommand extends PlatformCommand {
 	
 	@Override
 	public void run() {
-		World w = floor.getLift().getOffset().getWorld();
 		switch (floor.getDirection()) {
 		case NORTH:
 		case SOUTH:
