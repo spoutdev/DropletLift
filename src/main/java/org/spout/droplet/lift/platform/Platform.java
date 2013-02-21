@@ -69,14 +69,14 @@ public class Platform implements Runnable {
 	
 	private Block getBaseBlock() {
 		World w = lift.getOffset().getWorld();
-		return w.getBlock(lift.getOffset().getBlockX() + 1, lift.getOffset().getBlockY() + offset / 2, lift.getOffset().getBlockZ() + 1, w);
+		return w.getBlock(lift.getOffset().getBlockX() + 1, lift.getOffset().getBlockY() + offset / 2, lift.getOffset().getBlockZ() + 1);
 	}
 	
 	public void addCommand(PlatformCommand command) {
 		command.setPlatform(this);
 		commands.add(command);
 		if (!isRunning()) {
-			taskId = Spout.getScheduler().scheduleSyncRepeatingTask(DropletLift.getInstance(), this, 100, 100, TaskPriority.MEDIUM);
+			taskId = Spout.getScheduler().scheduleSyncRepeatingTask(DropletLift.getInstance(), this, 100, 100, TaskPriority.MEDIUM).getTaskId();
 		}
 	}
 	

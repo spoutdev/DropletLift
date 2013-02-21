@@ -34,7 +34,7 @@ public class LiftCommands {
 		}
 		if (args.length() >= 0) {
 			LiftStyle style = new DefaultLiftStyle();
-			Lift lift = new Lift(style, new Point(p.getWorld(), p.getPosition().getX(), 0, p.getPosition().getZ()));
+			Lift lift = new Lift(style, new Point(p.getWorld(), p.getScene().getPosition().getX(), 0, p.getScene().getPosition().getZ()));
 			plugin.addLift(lift);
 			p.sendMessage(ChatStyle.DARK_GREEN, "Your lift has been added. Id: ", ChatStyle.YELLOW, lift.getId());
 		}
@@ -55,11 +55,11 @@ public class LiftCommands {
 				Lift lift = plugin.getLift(args.getInteger(0));
 				if (lift != null) {
 					Point offset = lift.getOffset();
-					Point playerPos = p.getPosition();
+					Point playerPos = p.getScene().getPosition();
 					int floorOffset = playerPos.getBlockY() - offset.getBlockY();
 					int floorNumber = args.getInteger(1);
 					String permission = args.getString(2, null);
-					BlockFace direction = BlockFace.fromYaw(p.getYaw());
+					BlockFace direction = BlockFace.fromYaw(p.getScene().getRotation().getYaw());
 					Floor floor = new Floor(floorNumber, floorOffset, permission, direction);
 					lift.addFloor(floor);
 					lift.regenerate();
@@ -96,7 +96,7 @@ public class LiftCommands {
 				source.sendMessage("You have to be player");
 				return;
 			}
-			Lift lift = plugin.getNearestLift(p.getPosition(), 5);
+			Lift lift = plugin.getNearestLift(p.getScene().getPosition(), 5);
 			if (lift == null) {
 				p.sendMessage(ChatStyle.RED, "You're not at a lift");
 				return;
@@ -106,7 +106,7 @@ public class LiftCommands {
 				p.sendMessage(ChatStyle.RED, "The floor ", ChatStyle.YELLOW, args.getInteger(0), ChatStyle.RED, " does not exist.");
 				return;
 			}
-			Floor currentFloor = lift.getFloorByY(p.getPosition().getBlockY());
+			Floor currentFloor = lift.getFloorByY(p.getScene().getPosition().getBlockY());
 			if (currentFloor == null) {
 				p.sendMessage(ChatStyle.RED, "Sorry, I can't determine your current floor.");
 				return;
