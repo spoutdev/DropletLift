@@ -38,7 +38,8 @@ public class FloorStructureComponent extends StructureComponent {
 		picker.setInnerMaterial(floor.getLift().getStyle().getDoorMaterial());
 		
 		cuboid.setMinMax(1, 0, 0, 2, floor.getLift().getStyle().getFloorHeight() - 1, 0);
-		cuboid.fill(picker, false);
+		cuboid.setPicker(picker);
+		cuboid.fill(false);
 	}
 
 	@Override

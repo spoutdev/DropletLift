@@ -44,7 +44,8 @@ public class LiftShaftStructureComponent extends StructureComponent {
 		int to = (lift.getHighestFloor().getFloorOffset() + lift.getStyle().getFloorHeight());
 		for (int i = from; i <= to; i++) {
 			plane.setMinMax(min, max);
-			plane.fill(picker, false);
+			plane.setPicker(picker);
+			plane.fill(false);
 			min.add(ONE_UP);
 			max.add(ONE_UP);
 		}
