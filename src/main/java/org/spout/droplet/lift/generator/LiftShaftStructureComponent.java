@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.spout.api.material.block.BlockFace;
 import org.spout.api.math.IntVector3;
+
 import org.spout.droplet.lift.lift.Lift;
+
 import org.spout.vanilla.material.VanillaMaterials;
 import org.spout.vanilla.world.generator.structure.ComponentPlanePart;
 import org.spout.vanilla.world.generator.structure.SimpleBlockMaterialPicker;
@@ -15,7 +17,7 @@ public class LiftShaftStructureComponent extends StructureComponent {
 	Lift lift;
 	ComponentPlanePart plane = new ComponentPlanePart(this);
 	SimpleBlockMaterialPicker picker = new SimpleBlockMaterialPicker();
-	
+
 	public LiftShaftStructureComponent(Structure parent) {
 		super(parent);
 	}
@@ -24,11 +26,11 @@ public class LiftShaftStructureComponent extends StructureComponent {
 	public boolean canPlace() {
 		return true;
 	}
-	
+
 	public void setLift(Lift lift) {
 		this.lift = lift;
 	}
-	
+
 	public Lift getLift() {
 		return lift;
 	}
@@ -65,5 +67,4 @@ public class LiftShaftStructureComponent extends StructureComponent {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

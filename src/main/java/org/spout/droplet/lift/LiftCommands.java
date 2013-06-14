@@ -1,6 +1,5 @@
 package org.spout.droplet.lift;
 
-
 import org.spout.api.chat.style.ChatStyle;
 import org.spout.api.command.CommandContext;
 import org.spout.api.command.CommandSource;
@@ -9,6 +8,7 @@ import org.spout.api.command.annotated.CommandPermissions;
 import org.spout.api.entity.Player;
 import org.spout.api.geo.discrete.Point;
 import org.spout.api.material.block.BlockFace;
+
 import org.spout.droplet.lift.lift.Floor;
 import org.spout.droplet.lift.lift.Lift;
 import org.spout.droplet.lift.lift.LiftCall;
@@ -17,7 +17,7 @@ import org.spout.droplet.lift.style.LiftStyle;
 
 public class LiftCommands {
 	DropletLift plugin;
-	
+
 	public LiftCommands(DropletLift plugin) {
 		this.plugin = plugin;
 	}
@@ -39,7 +39,7 @@ public class LiftCommands {
 			p.sendMessage(ChatStyle.DARK_GREEN, "Your lift has been added. Id: ", ChatStyle.YELLOW, lift.getId());
 		}
 	}
-	
+
 	@Command(aliases = {"addfloor"}, usage = "<liftid> <floornumber> [permission]", desc="adds a new floor level to the lift")
 	@CommandPermissions("dropletlift.command.addfloor")
 	public void addFloor(CommandContext args, CommandSource source) {
@@ -63,13 +63,13 @@ public class LiftCommands {
 					Floor floor = new Floor(floorNumber, floorOffset, permission, direction);
 					lift.addFloor(floor);
 					lift.regenerate();
-					
+
 					p.sendMessage(ChatStyle.DARK_GREEN, "Floor ", ChatStyle.YELLOW, floorNumber, ChatStyle.DARK_GREEN, " has been added.");
 				}
 			}
 		}
 	}
-	
+
 	@Command(aliases = {"removefloor"}, usage = "<liftid> <floornumber>", desc="removes the given floor from the given lift")
 	@CommandPermissions("dropletlift.command.removefloor")
 	public void removeFloor(CommandContext args, CommandSource source) {
@@ -84,7 +84,7 @@ public class LiftCommands {
 			}
 		}
 	}
-	
+
 	@Command(aliases = {"call", "calllift"}, usage = "<floorid>", desc="calls the lift you are standing at. <floorid> is the floor you want to go to")
 	@CommandPermissions("dropletlift.command.call")
 	public void call(CommandContext args, CommandSource source) {
@@ -118,7 +118,7 @@ public class LiftCommands {
 			source.sendMessage(ChatStyle.RED, "You have to give the floor id");
 		}
 	}
-	
+
 	@Command(aliases = {"regen"}, usage = "<liftid>", desc="regenerates the lift")
 	@CommandPermissions("dropletlift.command.regen")
 	public void regen(CommandContext args, CommandSource source) {

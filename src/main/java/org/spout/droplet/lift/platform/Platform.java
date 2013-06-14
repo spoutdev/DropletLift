@@ -8,8 +8,10 @@ import org.spout.api.geo.World;
 import org.spout.api.geo.cuboid.Block;
 import org.spout.api.math.Vector2;
 import org.spout.api.scheduler.TaskPriority;
+
 import org.spout.droplet.lift.DropletLift;
 import org.spout.droplet.lift.lift.Lift;
+
 import org.spout.vanilla.material.VanillaMaterials;
 
 public class Platform implements Runnable {
@@ -19,20 +21,20 @@ public class Platform implements Runnable {
 	boolean spawned = false;
 	int taskId = -1;
 	Queue<PlatformCommand> commands = new LinkedBlockingQueue<PlatformCommand>();
-	
+
 	public Platform(Lift lift) {
 		super();
 		this.lift = lift;
 		this.size = lift.getStyle().getInnerSize();
 	}
-	
+
 	public void spawn() {
 		if (!spawned) {
 			spawned = true;
 			draw();
 		}
 	}
-	
+
 	private void draw() {
 		Block base = getBaseBlock();
 		for (int x = 0; x <= size.getFloorX(); x ++) {
@@ -43,7 +45,7 @@ public class Platform implements Runnable {
 			}
 		}
 	}
-	
+
 	private void remove() {
 		Block base = getBaseBlock();
 		for (int x = 0; x <= size.getFloorX(); x ++) {
@@ -52,11 +54,11 @@ public class Platform implements Runnable {
 			}
 		}
 	}
-	
+
 	public int getOffset() {
 		return offset;
 	}
-	
+
 	public void setOffset(int offset, boolean update) {
 		if (update) {
 			remove();
@@ -66,12 +68,12 @@ public class Platform implements Runnable {
 			draw();
 		}
 	}
-	
+
 	private Block getBaseBlock() {
 		World w = lift.getOffset().getWorld();
 		return w.getBlock(lift.getOffset().getBlockX() + 1, lift.getOffset().getBlockY() + offset / 2, lift.getOffset().getBlockZ() + 1);
 	}
-	
+
 	public void addCommand(PlatformCommand command) {
 		command.setPlatform(this);
 		commands.add(command);
@@ -79,20 +81,19 @@ public class Platform implements Runnable {
 			taskId = Spout.getScheduler().scheduleSyncRepeatingTask(DropletLift.getInstance(), this, 100, 100, TaskPriority.MEDIUM).getTaskId();
 		}
 	}
-	
-	
+
 	public void run() {
 		PlatformCommand cmd = commands.peek();
-		
+
 		if (cmd != null) {
 			cmd.run();
 			if (cmd.isFinished()) {
 				commands.poll();
 			}
 		}
-		
+
 		if (commands.isEmpty()) {
-			lift.nextTask(); // poll the lift for more tasks
+			lift.nextTask(); // Poll the lift for more tasks.
 			if (commands.isEmpty()) {
 				Spout.getScheduler().cancelTask(taskId);
 				taskId = -1;
@@ -103,7 +104,7 @@ public class Platform implements Runnable {
 	public boolean isRunning() {
 		return taskId != -1;
 	}
-	
+
 	public boolean isSpawned() {
 		return spawned;
 	}
